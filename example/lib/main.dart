@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -47,6 +49,8 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  String? _thumbnailPath;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,20 +59,33 @@ class _MyAppState extends State<MyApp> {
           title: Text('Video Thumbnail Example'),
         ),
         body: Center(
-          child: ElevatedButton(
-            onPressed: () async {
-              final thumbnail = Flutterthumbnail();
-              final thumbnailPath = await thumbnail.file(
-                video: 'https://firebasestorage.googleapis.com/v0/b/app-zoeta-dogsoul.firebasestorage.app/o/videos%2Fyes_and_no_achieve%20(1080p).mp4?alt=media&token=173dd3bc-ce10-4b25-8926-7eb22b1e4eea',
-                format: ImageFormat.PNG, // JPEG
-                maxh: 200,
-                maxw: 200,
-                timeMs: 1000,
-                quality: 90,
-              );
-              print('Thumbnail saved to: $thumbnailPath');
-            },
-            child: Text('Generate Thumbnail'),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () async {
+                  final thumbnail = Flutterthumbnail();
+                  final thumbnailPath = await thumbnail.file(
+                    video: "https://firebasestorage.googleapis.com/v0/b/app-zoeta-dogsoul.firebasestorage.app/o/videos%2Fyes_and_no_achieve%20(1080p).mp4?alt=media&token=173dd3bc-ce10-4b25-8926-7eb22b1e4eea",
+                    format: ImageFormat.PNG, // JPEG
+                    maxh: 200,
+                    maxw: 200,
+                    timeMs: 1000,
+                    quality: 90,
+                    
+                  );
+                  setState(() {
+                    _thumbnailPath = thumbnailPath;
+                  });
+                  print('Thumbnail saved to: $thumbnailPath');
+                },
+                child: Text('Generate Thumbnail'),
+              ),
+              if (_thumbnailPath != null) ...[
+                SizedBox(height: 20),
+                Image.file(File(_thumbnailPath!)),
+              ],
+            ],
           ),
         ),
       ),

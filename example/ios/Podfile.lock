@@ -1,0 +1,28 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutterthumbnail (0.0.1):
+    - Flutter
+  - integration_test (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutterthumbnail (from `.symlinks/plugins/flutterthumbnail/ios`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutterthumbnail:
+    :path: ".symlinks/plugins/flutterthumbnail/ios"
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutterthumbnail: a3134a4ef5f113c55638c0b34d15c61c8686f2e4
+  integration_test: 252f60fa39af5e17c3aa9899d35d908a0721b573
+
+PODFILE CHECKSUM: 4c438addb11b6da45ed7ae408823d68256222460
+
+COCOAPODS: 1.16.2
