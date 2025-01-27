@@ -170,9 +170,18 @@ private func generateThumbnail(from videoPath: String,
                 return
             }
             
-            let ext = format == 0 ? "jpg" : format == 1 ? "png" : "webp"
-            let fileName = outputPath ?? "\(UUID().uuidString).\(ext)"
-            let fileURL = URL(fileURLWithPath: fileName)
+             let ext = format == 0 ? "jpg" : format == 1 ? "png" : "webp"
+        let fileName: String
+        let fileURL: URL
+
+            if let outputPath = outputPath {
+            fileName = outputPath
+            fileURL = URL(fileURLWithPath: fileName)
+        } else {
+            let tempDir = FileManager.default.temporaryDirectory
+            fileName = UUID().uuidString + "." + ext
+            fileURL = tempDir.appendingPathComponent(fileName)
+        }
             
             do {
                 try data.write(to: fileURL)

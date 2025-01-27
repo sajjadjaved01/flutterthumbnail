@@ -1,7 +1,8 @@
 name: flutterthumbnail
-description: "A new Flutter plugin project."
+description: "A new Flutter plugin to generate thumbnails from video url."
 version: 0.0.1
-homepage:
+homepage: https://github.com/sajjadjaved01/flutterthumbnail
+
 
 environment:
   sdk: ^3.6.0
@@ -10,7 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  path_provider: ^2.1.5
   plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
